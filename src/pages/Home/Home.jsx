@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import wikiService from "../../services/wiki.service"
+import Card from "../../components/Card/Card"
 
 function Home (){
     const [country, setCountry] = useState([])
@@ -15,7 +16,9 @@ function Home (){
     
     return (
         <div>
-            <h1>Home</h1>
+            {country.map(c => (
+            <Card key={c.cca3} country={c} />
+            ))}
         </div>
     )
 }
