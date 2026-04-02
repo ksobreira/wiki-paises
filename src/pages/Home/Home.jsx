@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import wikiService from "../../services/wiki.service"
 import Card from "../../components/Card/Card"
+import Header from "../../components/Header/Header"
 
 function Home (){
     const [country, setCountry] = useState([])
@@ -16,10 +17,14 @@ function Home (){
     
     return (
         <div>
-            {country.map(c => (
-            <Card key={c.cca3} country={c} />
-            ))}
+            <Header/>
+            <div className="country-list">
+                {country.map(c => (
+                    <Card key={c.cca3} country={c} />
+                ))}
+            </div>
         </div>
     )
 }
+
 export default Home
