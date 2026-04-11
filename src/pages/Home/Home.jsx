@@ -5,6 +5,15 @@ import Header from "../../components/Header/Header"
 
 function Home (){
     const [country, setCountry] = useState([])
+    const [searchText, setSearchText] = useState("")
+    const [selectedContinent, setSelectedContinent] = useState("")
+    
+    const filteredCountries = country
+        .filter(c => c.name.common.toLowerCase().includes(searchText.toLowerCase()))
+        .filter(c => {
+            if (selectedContinent === "") return true
+            return c.region === selectedContinent
+        })
 
     useEffect(() => {
         async function fecthData(){
@@ -17,9 +26,13 @@ function Home (){
     
     return (
         <div>
-            <Header/>
+            <input type="text" 
+                placeholder="Buscar país..." value={searchText}
+                onChange={e => setSearchText(e.target.value)}
+            />
+            <Header onSelectContinent={setSelectedContinent}/>
             <div className="country-list">
-                {country.map(c => (
+                {filteredCountries.map(c => (
                     <Card key={c.cca3} country={c} />
                 ))}
             </div>
