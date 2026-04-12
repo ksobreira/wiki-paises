@@ -1,14 +1,16 @@
+import styles from './Header.module.css'
+
 function Header( {onSelectContinent}){
     
     return (
         <header>
-            <h1>WikiPaises</h1>
+            <h1 className= {styles.logo}>WikiPaises</h1>
             <nav>
-                <button onClick={() => onSelectContinent("Europe")}>Europe</button>
-                <button onClick={() => onSelectContinent("Americas")}>Americas</button>
-                <button onClick={() => onSelectContinent("Asia")}>Asia</button>
-                <button onClick={() => onSelectContinent("Africa")}>Africa</button>
-                <button onClick={() => onSelectContinent("Oceania")}>Oceania</button>
+                <button className={styles.navButton} onClick={() => onSelectContinent("Europe")}>Europe</button>
+                <button className={styles.navButton} onClick={() => onSelectContinent("Americas")}>Americas</button>
+                <button className={styles.navButton} onClick={() => onSelectContinent("Asia")}>Asia</button>
+                <button className={styles.navButton} onClick={() => onSelectContinent("Africa")}>Africa</button>
+                <button className={styles.navButton} onClick={() => onSelectContinent("Oceania")}>Oceania</button>
             </nav>
         </header>
     );
