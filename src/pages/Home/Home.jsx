@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import wikiService from "../../services/wiki.service"
 import Card from "../../components/Card/Card"
 import Header from "../../components/Header/Header"
+import styles from './Home.module.css'
 
 function Home (){
     const [country, setCountry] = useState([])
@@ -35,7 +36,6 @@ function Home (){
     useEffect(() => {
         async function fecthData(){
             const listCountry = await wikiService.getAllCountries();
-            console.log(listCountry)
             setCountry(listCountry)
         }
         fecthData();
@@ -43,23 +43,26 @@ function Home (){
     
     return (
         <div>
-            <input type="text" 
-                placeholder="Buscar país..." value={searchText}
-                onChange={e => handleSearch(e.target.value)}
-            />
             <Header onSelectContinent={handleContinent}/>
-            <div className="country-list">
-                {currentCountries.map(c => (
-                    <Card key={c.cca3} country={c} />
-                ))}
+            <div className={styles.container}>
+                <input 
+                    type="text" 
+                    placeholder="Buscar país..." 
+                    value={searchText}
+                    onChange={e => handleSearch(e.target.value)}
+                    className={styles.searchBar}
+                />
+                <div className={styles.grid}>
+                    {currentCountries.map(c => (
+                        <Card key={c.cca3} country={c} />
+                    ))}
+                </div>
+                <div className={styles.pagination}>
+                    <button className={styles.pageButton} onClick={() => setPage(page - 1)} disabled={page === 1}>← Anterior</button>
+                    <span className={styles.pageInfo}>Página {page} de {totalPages}</span>
+                    <button className={styles.pageButton} onClick={() => setPage(page + 1)} disabled={page === totalPages}>Próximo →</button>
+                </div>
             </div>
-
-            <div>
-                <button onClick={() => setPage (page - 1)} disabled = {page === 1}>Anterior</button>
-                <span>Pagina {page} de {totalPages}</span>
-                <button onClick={() => setPage (page + 1)} disabled = {page === totalPages}>Próximo</button>
-            </div>
-
         </div>
     )
 }
