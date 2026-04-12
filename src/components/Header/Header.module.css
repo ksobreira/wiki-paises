@@ -1,0 +1,44 @@
+.header {
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navButton {
+  background: none;
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: var(--primary-dark);
+  color: var(--surface);
+}
+
+.navButtonActive {
+  background-color: var(--primary);
+  color: var(--surface);
+}
