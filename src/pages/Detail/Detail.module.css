@@ -77,3 +77,20 @@
   line-height: 1.8;
   font-size: 0.95rem;
 }
+
+/*Responsividade*/
+@media (max-width: 768px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .officialName {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+}
