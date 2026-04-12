@@ -1,8 +1,10 @@
+import styles from './InfoBlock.module.css'
+
 function InfoBlock ({ label, value}) {
     return (
-        <div className ="info-block">
-            <span className = "info-label">{label}</span>
-            <span className = "info-value">{value}</span>
+        <div className ={styles.block}>
+            <span className = {styles.label}>{label}</span>
+            <span className = {styles.value}>{value}</span>
         </div>
     )
 }
