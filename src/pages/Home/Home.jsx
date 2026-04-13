@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react"
 import wikiService from "../../services/wiki.service"
+import SearchBar from "../../components/SearchBar/SearchBar"
+import Pagination from "../../components/Pagination/Pagination"
 import Card from "../../components/Card/Card"
 import Header from "../../components/Header/Header"
 import styles from './Home.module.css'
@@ -45,23 +47,18 @@ function Home (){
         <div>
             <Header onSelectContinent={handleContinent}/>
             <div className={styles.container}>
-                <input 
-                    type="text" 
-                    placeholder="Buscar país..." 
-                    value={searchText}
-                    onChange={e => handleSearch(e.target.value)}
-                    className={styles.searchBar}
-                />
+                <SearchBar value={searchText} onChange={handleSearch} />
                 <div className={styles.grid}>
                     {currentCountries.map(c => (
                         <Card key={c.cca3} country={c} />
                     ))}
                 </div>
-                <div className={styles.pagination}>
-                    <button className={styles.pageButton} onClick={() => setPage(page - 1)} disabled={page === 1}>← Anterior</button>
-                    <span className={styles.pageInfo}>Página {page} de {totalPages}</span>
-                    <button className={styles.pageButton} onClick={() => setPage(page + 1)} disabled={page === totalPages}>Próximo →</button>
-                </div>
+                <Pagination 
+                    page={page}
+                    totalPages={totalPages}
+                    onPrevious={() => setPage(page - 1)}
+                    onNext={() => setPage(page + 1)}
+                />
             </div>
         </div>
     )
