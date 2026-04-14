@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './Header.module.css'
 
-function Header( {onSelectContinent}){
+function Header({ onSelectContinent }) {
+    const navigate = useNavigate();
     
     return (
-        <header>
-            <h1 className= {styles.logo}>WikiPaises</h1>
-            <nav>
+        <header className={styles.header}>
+            <h1 className={styles.logo} onClick={() => navigate("/")}>WikiPaíses</h1>
+            <nav className={styles.nav}>
                 <button className={styles.navButton} onClick={() => onSelectContinent("Europe")}>Europe</button>
                 <button className={styles.navButton} onClick={() => onSelectContinent("Americas")}>Americas</button>
                 <button className={styles.navButton} onClick={() => onSelectContinent("Asia")}>Asia</button>
