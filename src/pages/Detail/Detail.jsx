@@ -4,6 +4,7 @@ import { formatArea } from '../../utils/formatters'
 import wikiService from "../../services/wiki.service"
 import Header from "../../components/Header/Header"
 import InfoBlock from "../../components/InfoBlock/InfoBlock"
+import Footer from '../../components/Footer/Footer'
 import styles from './Detail.module.css'
 
 function Detail (){

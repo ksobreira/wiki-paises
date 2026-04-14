@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import Card from '../../components/Card/Card'
 import Pagination from '../../components/Pagination/Pagination'
+import Footer from '../../components/Footer/Footer'
 
 function Home() {
     const { currentCountries, page, totalPages, searchText, handleSearch, handleContinent, setPage } = useCountries()
@@ -25,6 +26,7 @@ function Home() {
                     onNext={() => setPage(page + 1)}
                 />
             </div>
+            <Footer />
         </div>
     )
 }
