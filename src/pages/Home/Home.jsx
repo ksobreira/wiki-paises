@@ -1,48 +1,13 @@
-import {useEffect, useState} from "react"
-import wikiService from "../../services/wiki.service"
-import SearchBar from "../../components/SearchBar/SearchBar"
-import Pagination from "../../components/Pagination/Pagination"
-import Card from "../../components/Card/Card"
-import Header from "../../components/Header/Header"
 import styles from './Home.module.css'
+import useCountries from '../../hooks/useCountries'
+import Header from '../../components/Header/Header'
+import SearchBar from '../../components/SearchBar/SearchBar'
+import Card from '../../components/Card/Card'
+import Pagination from '../../components/Pagination/Pagination'
 
-function Home (){
-    const [country, setCountry] = useState([])
-    const [searchText, setSearchText] = useState("")
-    const [selectedContinent, setSelectedContinent] = useState("")
-    const [page, setPage] = useState(1)
-    const [pageCountries, setPageCountries] = useState(8)
-    
-    const filteredCountries = country
-        .filter(c => c.name.common.toLowerCase().includes(searchText.toLowerCase()))
-        .filter(c => {
-            if (selectedContinent === "") return true
-            return c.region === selectedContinent
-        })
-    
-    const finalIndex = page * pageCountries
-    const inicialIndex = finalIndex - pageCountries
-    const currentCountries = filteredCountries.slice(inicialIndex, finalIndex)
-    const totalPages = Math.ceil(filteredCountries.length / pageCountries)
-    
-    const handleSearch = (text) => {
-        setSearchText(text)
-        setPage(1)
-    }
+function Home() {
+    const { currentCountries, page, totalPages, searchText, handleSearch, handleContinent, setPage } = useCountries()
 
-    const handleContinent = (continent) => {
-        setSelectedContinent(continent)
-        setPage(1)
-    }
-
-    useEffect(() => {
-        async function fecthData(){
-            const listCountry = await wikiService.getAllCountries();
-            setCountry(listCountry)
-        }
-        fecthData();
-    }, [])
-    
     return (
         <div>
             <Header onSelectContinent={handleContinent}/>
