@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { formatPopulation } from '../../utils/formatters'
 import styles from './Card.module.css'
 
 function Card({ country }) {
@@ -16,7 +17,7 @@ function Card({ country }) {
                     <span className={styles.badge}>{country.region}</span>
                 </div>
                 <p className={styles.capital}>📍 {country.capital[0]}</p>
-                <p className={styles.population}>👥 {country.population.toLocaleString()}</p>
+                <p className={styles.population}>👥 {formatPopulation(country.population)}</p>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import {useParams, useNavigate} from "react-router-dom"
+import { formatArea } from '../../utils/formatters'
 import wikiService from "../../services/wiki.service"
 import Header from "../../components/Header/Header"
 import InfoBlock from "../../components/InfoBlock/InfoBlock"
@@ -37,7 +38,7 @@ function Detail (){
                     <InfoBlock label="Capital: " value={countryCode.capital[0]} />
                     <InfoBlock label="Continente: " value={countryCode.region} />
                     <InfoBlock label="Sub-Região: " value={countryCode.subregion} />
-                    <InfoBlock label="Área: " value={`${countryCode.area} km²`} />
+                    <InfoBlock label="Área: " value={`${formatArea(countryCode.area)} km²`} />
                     <InfoBlock label="Idiomas: " value={Object.values(countryCode.languages).join(", ")}/>
                     <InfoBlock label="Moeda: " 
                         value={`${Object.values(countryCode.currencies)[0].name} - ${Object.keys(countryCode.currencies)[0]} - ${Object.values(countryCode.currencies)[0].symbol}`}
