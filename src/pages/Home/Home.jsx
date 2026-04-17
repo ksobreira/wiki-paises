@@ -7,11 +7,11 @@ import Pagination from '../../components/Pagination/Pagination'
 import Footer from '../../components/Footer/Footer'
 
 function Home() {
-    const { currentCountries, page, totalPages, searchText, handleSearch, handleContinent, setPage } = useCountries()
+    const { currentCountries, page, totalPages, searchText, handleSearch, handleContinent, setPage, resetFilters } = useCountries()
 
     return (
         <div>
-            <Header onSelectContinent={handleContinent}/>
+            <Header onSelectContinent={handleContinent} onReset={resetFilters}/>
             <div className={styles.container}>
                 <SearchBar value={searchText} onChange={handleSearch} />
                 <div className={styles.grid}>

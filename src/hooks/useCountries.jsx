@@ -42,6 +42,12 @@ function useCountries() {
         setPage(1)
     }
 
+    const resetFilters = () => {
+        setSearchText("")
+        setSelectedContinent("")
+        setPage(1)
+    }
+
     return {
         currentCountries,
         page,
@@ -49,7 +55,8 @@ function useCountries() {
         searchText,
         handleSearch,
         handleContinent,
-        setPage
+        setPage,
+        resetFilters
     }
 }
 

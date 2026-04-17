@@ -24,7 +24,7 @@ function Detail (){
     
     return (
         <div>
-            <Header />
+            <Header onSelectContinent={() => {}} onReset={() => {}}/>
             <div className={styles.container}>
                 <button className={styles.backButton} onClick={() => navigate("/")}>← Voltar para a lista</button>
                 <img 
