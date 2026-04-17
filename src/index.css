@@ -25,6 +25,19 @@ body {
   min-height: 100vh;
 }
 
+body.dark {
+  --primary: #A78BFA;
+  --primary-dark: #7C3AED;
+  --primary-light: #C084FC;
+  --accent: #3D9970;
+  --background: #0F0A1A;
+  --surface: #1A1025;
+  --text-primary: #F0EEFF;
+  --text-secondary: #2ECC7A;
+  --border: #2D1F4A;
+  --shadow: 0 2px 12px rgba(167, 139, 250, 0.1);
+}
+
 h1, h2, h3 {
   font-family: 'Syne', sans-serif;
 }
