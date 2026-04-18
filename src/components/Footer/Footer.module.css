@@ -33,3 +33,11 @@
 .logosFooter:hoover {
   color: var(--accent);
 }
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5rem 1rem;
+  }
+}
